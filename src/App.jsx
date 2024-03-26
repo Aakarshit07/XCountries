@@ -10,10 +10,14 @@ function App() {
   });
 
   const fetchCountries = async () => {
-    const data = await fetch("https://restcountries.com/v3.1/all");
-    const jsonData = await data.json();
+    try {
+      const data = await fetch("https://restcountries.com/v3.1/all");
+      const jsonData = await data.json();
+      setCountries(jsonData);
     
-    setCountries(jsonData);
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
